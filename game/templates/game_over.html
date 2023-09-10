@@ -6,6 +6,11 @@
     <title>Game over!</title>
 </head>
 <body>
-    <h1>Поздравляю, вы угадали число!</h1>
+    {% if is_guessed == True %}
+    <h1>Поздравляю, вы угадали число {{ secret_number }} с {{ attempts }} попытки!</h1>
+    {% else %}
+    <h1>К сожалению, количество попыток превышено, вы не угадали число {{ secret_number }}!</h1>
+    {% endif %}
+    <a href="{% url 'game_view' %}"">Попробовать еще раз</a>
 </body>
 </html>

@@ -4,11 +4,12 @@
     <title>Угадай число!</title>
 </head>
 <body>
-<h1>Загадать число</h1>
+<h1>Угадай число от 1 до 100</h1>
+<h2>Попыток {{attempts}}</h2>
 <form method="post">
     {% csrf_token %}
     {{form}}
-    <input type="submit" value="Guess">
+    <input type="submit" value="Guess" style="margin: 10px;">
 </form>
 
 {% if message %}
