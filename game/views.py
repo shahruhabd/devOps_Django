@@ -14,10 +14,10 @@ def game_view(request):
             game.attempts += 1
             game.save()
 
-            if game.attempts > 5:
+            if game.attempts == 5 and guessed_number != game.secret_number:
                 return render(request, 'game_over.html', {'attempts': game.attempts, 'secret_number': game.secret_number, 'is_guessed': game.is_guessed})
 
-            if guessed_number == game.secret_number:
+            if guessed_number == game.secret_number and game.attempts < 5:
                 game.is_guessed = True
                 game.save()
                 return render(request, 'game_over.html', {'attempts': game.attempts, 'secret_number': game.secret_number, 'is_guessed': game.is_guessed})
