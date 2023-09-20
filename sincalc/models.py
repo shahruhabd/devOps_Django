@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 
 class SinCalculation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)

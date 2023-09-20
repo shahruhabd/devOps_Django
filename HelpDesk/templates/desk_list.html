@@ -1,0 +1,26 @@
+{% if user.is_authenticated %}
+<div class="desk_list">
+    {% if requests %}
+    <div class="desk_list_item">
+        <div class="item-header">id</div>
+        <div class="item-header">Имя</div>
+        <div class="item-header">Номер телефона</div>
+        <div class="item-header">Почта</div>
+        <div class="item-header">Описание проблемы</div>
+        <div class="item-header">Приоритет</div>
+        <div class="item-header">Дата</div>
+    </div>
+    {% for request in requests %}
+    <div class="desk_list_item">
+        <div class="id item">{{ request.id }}</div>
+        <div class="name item">{{ request.name }}</div>
+        <div class="phone_number item">{{ request.phone_number }}</div>
+        <div class="email item">{{ request.email }}</div>
+        <div class="description item">{{ request.description }}</div>
+        <div class="priority item">{{ request.priority }}</div>
+        <div class="created_at item">{{ request.created_at }}</div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endif %}

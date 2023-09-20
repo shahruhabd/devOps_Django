@@ -9,6 +9,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', sin_calculator, name='sin_calculator'),
     path('game/', game_view, name='game_view'),
-    path('hepl-desk/registration', registration, name='registration'),
-    path('hepl-desk/login', login, name='login')
+    path('help-desk/', desk, name='desk'),
+    path('help-desk/registration', registration, name='registration'),
+    path('help-desk/login', login, name='login'),
+    path('help-desk/logout', logout, name='logout')
 ]

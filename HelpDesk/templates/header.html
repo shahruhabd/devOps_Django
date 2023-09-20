@@ -1,0 +1,11 @@
+<div class="d-flex header">
+    <a href="{% url 'desk' %}" class="header_title">Help Desk</a>
+    <div>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="header_link btn btn-success">Logout</a>
+        {% else %}
+        <a href="{% url 'registration' %}" class="header_link btn btn-success">Register</a>
+        <a href="{% url 'login' %}" class="header_link btn btn-success">Login</a>
+        {% endif %}
+    </div>
+</div>
