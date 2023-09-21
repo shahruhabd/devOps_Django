@@ -45,7 +45,7 @@
 }
 .desk_list_item {
     display: grid;
-    grid-template-columns: 5% 10% 15% 20% 30% 10% 10%;
+    grid-template-columns: 5% 10% 15% 20% 20% 10% 10% 10%;
     width: 100%;
     background-color: #42B883;
     color: #fff;

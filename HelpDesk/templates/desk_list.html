@@ -9,17 +9,23 @@
         <div class="item-header">Описание проблемы</div>
         <div class="item-header">Приоритет</div>
         <div class="item-header">Дата</div>
+        <div class="item-header">Статус</div>
     </div>
     {% for request in requests %}
-    <div class="desk_list_item">
-        <div class="id item">{{ request.id }}</div>
-        <div class="name item">{{ request.name }}</div>
-        <div class="phone_number item">{{ request.phone_number }}</div>
-        <div class="email item">{{ request.email }}</div>
-        <div class="description item">{{ request.description }}</div>
-        <div class="priority item">{{ request.priority }}</div>
-        <div class="created_at item">{{ request.created_at }}</div>
-    </div>
+    <a href="{% url 'request_detail' request.pk %}">
+
+        <div class="desk_list_item">
+            <div class="id item">{{ request.id }}</div>
+            <div class="name item">{{ request.name }}</div>
+            <div class="phone_number item">{{ request.phone_number }}</div>
+            <div class="email item">{{ request.email }}</div>
+            <div class="description item">{{ request.description }}</div>
+            <div class="priority item">{{ request.priority }}</div>
+            <div class="created_at item">{{ request.created_at }}</div>
+            <div class="item">{{ request.status }}</div>
+        </div>
+    </a>
+
     {% endfor %}
     {% endif %}
 </div>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.contrib import messages, auth
 from django.urls import reverse
 from .forms import *
@@ -15,8 +15,13 @@ def desk(request):
             return HttpResponseRedirect(reverse('desk'))
     else: 
         form = RequestForm()
-    requests = Request.objects.order_by('created_at')
+    resolved = 'RESOLVED'
+    requests = Request.objects.exclude(status=resolved).order_by('created_at')
     return render(request, 'desk.html', {'form':form, 'requests': requests})
+
+def request_detail(request, pk): 
+    request_detail = get_object_or_404(Request, pk=pk)
+    return render(request, 'request_detail.html', {'request_detail': request_detail})
 
 def registration(request):
     if request.method == 'POST':

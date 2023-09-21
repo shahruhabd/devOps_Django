@@ -16,21 +16,33 @@ class Request(models.Model):
     LOW = 'LOW'
     MEDIUM = 'MEDIUM'
     HIGH = 'HIGH'
-
     PRIORITY_CHOICES = [
         (LOW, 'Низкий'),
         (MEDIUM, 'Средний'),
         (HIGH, 'Высокий'),
     ]
-
     priority = models.CharField(
         max_length=10,
         choices=PRIORITY_CHOICES,
         default=MEDIUM,
     )
 
+    NEW = "NEW"
+    INPROGRESS = "IN PROGRESS"
+    RESOLVED = "RESOLVED"
+    STATUS_CHOICES = [
+        (NEW, 'new'),
+        (INPROGRESS, 'in progress'),
+        (RESOLVED, 'resolved'),
+    ]
+    status = models.CharField(
+        max_length=11,
+        choices=STATUS_CHOICES,
+        default=NEW
+    )
+
     def __str__(self):
-        return f'{self.id}, {self.name}'
+        return f'{self.id}, {self.name}, {self.status}'
 
 
 
