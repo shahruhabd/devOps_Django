@@ -1,32 +1,34 @@
 {% if user.is_authenticated %}
 <div class="desk_list">
     {% if requests %}
-    <div class="desk_list_item">
-        <div class="item-header">id</div>
-        <div class="item-header">Имя</div>
-        <div class="item-header">Номер телефона</div>
-        <div class="item-header">Почта</div>
-        <div class="item-header">Описание проблемы</div>
-        <div class="item-header">Приоритет</div>
-        <div class="item-header">Дата</div>
-        <div class="item-header">Статус</div>
-    </div>
-    {% for request in requests %}
-    <a href="{% url 'request_detail' request.pk %}">
-
-        <div class="desk_list_item">
-            <div class="id item">{{ request.id }}</div>
-            <div class="name item">{{ request.name }}</div>
-            <div class="phone_number item">{{ request.phone_number }}</div>
-            <div class="email item">{{ request.email }}</div>
-            <div class="description item">{{ request.description }}</div>
-            <div class="priority item">{{ request.priority }}</div>
-            <div class="created_at item">{{ request.created_at }}</div>
-            <div class="item">{{ request.status }}</div>
-        </div>
-    </a>
-
-    {% endfor %}
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Номер телефона</th>
+                <th scope="col">Почта</th>
+                <th scope="col">Описание проблемы</th>
+                <th scope="col">Приоритет</th>
+                <th scope="col">Дата</th>
+                <th scope="col">Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in requests %}
+                <tr>
+                    <th scope="row"><a href="{% url 'request_detail' request.pk %}">{{ request.id }}</a></th>
+                    <td><a href="{% url 'request_detail' request.pk %}">{{ request.name }}</a></td>
+                    <td><a href="{% url 'request_detail' request.pk %}">{{ request.phone_number }}</a></td>
+                    <td><a href="{% url 'request_detail' request.pk %}">{{ request.email }}</a></td>
+                    <td><a href="{% url 'request_detail' request.pk %}">{{ request.description }}</a></td>
+                    <td><a href="{% url 'request_detail' request.pk %}">{{ request.priority }}</a></td>
+                    <td><a href="{% url 'request_detail' request.pk %}">{{ request.created_at }}</a></td>
+                    <td><a href="{% url 'request_detail' request.pk %}">{{ request.status }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% endif %}
 </div>
 {% endif %}

@@ -17,14 +17,14 @@
   <div class="desk_wrapper">
     {% if messages %}
     <div class="message">
-    {% for message in messages %}
-    {{ message }}
-    {% endfor %}
+      {% for message in messages %}
+      {{ message }}
+      {% endfor %}
     </div>
     {% else %}
     <div class="">
-    {% if form.non_field_errors %}
-    {% endif %}
+      {% if form.non_field_errors %}
+      {% endif %}
     </div>
     {% endif %}
 
