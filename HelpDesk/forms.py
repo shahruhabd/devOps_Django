@@ -40,3 +40,17 @@ class RequestForm(forms.ModelForm):
         model = Request
         fields = ['name', 'phone_number', 'email', 'description', 'priority']
 
+
+class RequestUpdateForm(forms.ModelForm):
+    resolve_action = forms.CharField(label='', widget=forms.TextInput(attrs={
+        'class': 'form-control', 'placeholder': 'Решение проблемы'})) 
+    status = forms.ChoiceField(
+        label='Cтатус',
+        choices=Request.STATUS_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+
+    class Meta:
+        model = Request
+        fields = ['resolve_action', 'status', 'assigned_user']
+

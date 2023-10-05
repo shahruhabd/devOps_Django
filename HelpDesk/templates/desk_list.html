@@ -1,6 +1,7 @@
 {% if user.is_authenticated %}
 <div class="desk_list">
     {% if requests %}
+    <div class="text-white mb-3 mx-5"><b>Найдено: {{requests.count}} заявок</b> </div>
     <table class="table table-dark table-hover">
         <thead>
             <tr>
@@ -29,6 +30,8 @@
             {% endfor %}
         </tbody>
     </table>
+    {% else %}
+    <h2 class="text-white m-5">Новых заявок нет</h2>
     {% endif %}
 </div>
 {% endif %}

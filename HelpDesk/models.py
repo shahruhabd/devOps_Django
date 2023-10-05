@@ -5,7 +5,7 @@ class User(AbstractUser):
     gender = models.CharField(max_length=20)
 
     def __str__(self):
-        return f"#{self.id} {self.email}"
+        return f"#{self.id} {self.username}"
     
 class Request(models.Model):
     name = models.CharField(max_length=20, blank=False, null=False)
@@ -30,16 +30,22 @@ class Request(models.Model):
     NEW = "NEW"
     INPROGRESS = "IN PROGRESS"
     RESOLVED = "RESOLVED"
+    CONFIRMED = "CONFIRMED"
     STATUS_CHOICES = [
         (NEW, 'new'),
         (INPROGRESS, 'in progress'),
         (RESOLVED, 'resolved'),
+        (CONFIRMED, 'confirmed')
     ]
     status = models.CharField(
         max_length=11,
         choices=STATUS_CHOICES,
         default=NEW
     )
+    resolve_action = models.CharField(max_length=100, blank=True, null=True)
+    assigned_user = models.ForeignKey(User, related_name='assigned_requests', null=True, on_delete=models.SET_NULL)
+    resolved_user = models.ForeignKey(User, related_name='resolved_requests', null=True, on_delete=models.SET_NULL)
+
 
     def __str__(self):
         return f'{self.id}, {self.name}, {self.status}'

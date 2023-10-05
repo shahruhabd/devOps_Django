@@ -30,7 +30,6 @@
     min-height: calc(100vh - 80px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 .request_add {
     max-width: 800px;
@@ -41,8 +40,8 @@
     padding: 20px;
 }
 .desk_list {
-    /* width: 75%; */
-    /* background-color: #; */
+    width: 100%;
+    margin: 0 auto;
 }
 /* .desk_list_item {
     display: grid;
@@ -83,4 +82,21 @@ td > a, th > a {
     text-decoration: none;
     height: 100%;
     color: #fff;
+}
+.req-det_form {
+    background-color: aliceblue;
+    padding: 30px;
+    border-radius: 20px;
+}
+.wrapper_request_detail {
+    width: 700px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+#id_assigned_user {
+    width: 100%;
+    padding: 4px 0;
+    margin-bottom: 10px;
 }

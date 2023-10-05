@@ -1,6 +1,47 @@
 {% extends 'base.html' %}
 {% block title %}{% endblock %}
 {% block content %}
-{{request_detail}}
 
+<div class="wrapper_request_detail">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title"><b>Имя:</b> {{request_detail.name}}</h2>
+      <h5 class="card-text"><b>Описание:</b> {{request_detail.description}}</h5>
+      <h6 class="card-text"><b>ID:</b> #{{request_detail.id}}</h6>
+      <h6 class="card-text"><b>Номер телефона:</b> {{request_detail.phone_number}}</h6>
+      <h6 class="card-text"><b>Сотрудник:</b> {{request_detail.assigned_user}}</h6>
+      <h6 class="card-text"><b>Приоритет:</b> {{request_detail.priority}}</h6>
+      <h6 class="card-text">
+        <b>Статус:</b>
+        {% if request_detail.status == 'NEW' %}
+        <span style="color: green;">{{request_detail.status}}</span>
+        {% elif request_detail.status == 'IN PROGRESS'%}
+        <span style="color: rgb(197, 197, 29);">{{request_detail.status}}</span>
+        {% elif request_detail.status == 'RESOLVED' %}
+        <span style="color: black;">{{request_detail.status}}</span>
+        {%endif%}
+      </h6>
+      <h6 class="card-text"><b>Дата создания:</b> {{request_detail.created_at}}</h6>
+    </div>
+  </div>
+  <form action="" class="req-det_form" method="post">
+    {% csrf_token %}
+    <h3>Если решили проблему, то можете внести изменения</h3>
+    <label for="{{ form.status.id_for_label }}">Решение:</label>
+    {{form.resolve_action}}
+    <label for="{{ form.status.id_for_label }}">Назначенный сотрудник:</label>
+    {{form.assigned_user}}
+    <label for="{{ form.status.id_for_label }}">Cтатус:</label>
+    <select name="{{ form.status.name }}" style="margin-bottom: 10px;" name="status" id="id_status">
+        <option value="NEW" {% if request_detail.status == 'new' %}selected{% endif %}>New</option>
+        <option value="IN PROGRESS" {% if request_detail.status == 'IN PROGRESS' %}selected{% endif %}>In Progress</option>
+        <option value="RESOLVED" {% if request_detail.status == 'RESOLVED' %}selected{% endif %}>Resolved</option>
+        {% if is_tester %}
+        <option value="CONFIRMED" {% if request_detail.status == 'CONFIRMED' %}selected{% endif %}>Confirmed</option>
+        {% endif %}
+        <!-- {{form}} -->
+    </select>
+    <button type="submit" class="btn btn-primary w-100">Сохранить</button>
+  </form>
+</div>
 {% endblock %}

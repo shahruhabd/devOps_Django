@@ -10,6 +10,7 @@ urlpatterns = [
     path('sin-calc/', sin_calculator, name='sin_calculator'),
     path('game/', game_view, name='game_view'),
     path('help-desk/', desk, name='desk'),
+    path('help-desk/create_request', create_request, name='create_request'),
     path('help-desk/<int:pk>/', request_detail, name='request_detail'),
     path('help-desk/registration', registration, name='registration'),
     path('help-desk/login', login, name='login'),
